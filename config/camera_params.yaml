@@ -1,5 +1,11 @@
-/usb_camera_node:   # <--- 必须修改：要和 C++ 中的 Node("名字") 保持一致
+/usb_camera_node:
   ros__parameters:
+    # 视频流来源选择：
+    # 若 use_zmq 为 True，则忽略本地相机和 web_cam，直接通过 ZMQ 接收视频流
+    use_zmq: False
+    zmq_endpoint: "tcp://127.0.0.1:5134"
+
+    # 原有相机配置 (当 use_zmq 为 False 时生效)
     web_cam: True
     web_cam_url: "http://192.168.1.216:4747/video"
     camera_index: 0
@@ -18,7 +24,6 @@
     fps: 240.0
 
     # 曝光
-    # 如果设为 True，exposure_time 将被忽略（取决于相机硬件逻辑）
     exposure_auto: True
     exposure_time: 800
 
