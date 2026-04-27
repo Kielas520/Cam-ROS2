@@ -26,7 +26,7 @@ add_executable(usb_camera_node src/usb_camera_node.cpp)
 ament_target_dependencies(usb_camera_node
   rclcpp sensor_msgs image_transport cv_bridge camera_info_manager cppzmq
 )
-target_link_libraries(usb_camera_node ${OpenCV_LIBS})
+target_link_libraries(usb_camera_node ${OpenCV_LIBS} zmq)
 
 install(DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME})
